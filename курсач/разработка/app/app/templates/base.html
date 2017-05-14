@@ -1,0 +1,440 @@
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>Факультет - детектор плагиата</title>
+		<style type="text/css">
+			/*-------------------------------------------------------------------------*/
+			/*base.html----------------------------------------------------------------*/
+			/*Фон сайта*/
+			body{
+				background-image: url({{url_for('static', filename='Geometry.png')}});
+			}
+
+			/*Ссылки*/
+			.btn-link {
+				color: #006699;
+				cursor: pointer;
+				border-color: transparent;
+				-webkit-border-radius: 0;
+				-moz-border-radius: 0;
+			    border-radius: 0;
+			}
+			#link{
+				display: inline-block;
+				border-bottom: 1px solid #006699;
+			}
+
+			/*Текст 2016, Сергеев Виктор*/
+			#text1{
+				font-size: 20px;
+				margin-top: 50px;
+			}
+
+			/*Основной блок*/
+			#mainframe{
+				margin-top: 4%;
+			}
+
+			/*login.html---------------------------------------------------------------*/
+			/*Текст Прототип детектора плагиата*/
+			.itmofont{
+			    font-family: "ALS Schlange sans" !important;
+			    font-size: 34px !important;
+			}
+			.logo-row p{
+				margin-top: 30px;
+				text-align: center;
+				line-height: 38px;
+				font-family: "Open Sans";
+				font-weight: 500;
+				color: #24478c;
+			}
+
+			/*Текст ссылок на журнал и расписание*/
+			#text2{
+				font-size: 15px;
+			}
+
+			/*Окно по центру*/
+			#frame1{
+				width: 350px;
+				text-align: left;
+				color: #999999;
+			}
+
+			/*Поле input*/
+			input{
+				width: 350px;
+			    border-radius: 5px;
+			    box-sizing: border-box;
+			    -webkit-box-sizing: border-box;
+			    -moz-box-sizing: border-box;
+			    border:1px solid #BEBEBE;
+			    padding: 7px;
+			    margin:0px;
+			    -webkit-transition: all 0.30s ease-in-out;
+			    -moz-transition: all 0.30s ease-in-out;
+			    -ms-transition: all 0.30s ease-in-out;
+			    -o-transition: all 0.30s ease-in-out;
+			    outline: none;
+			    color: #878787;
+			    margin-bottom: 5px;
+			}
+			input:hover{
+				border-color: #0fa3ff;
+				box-shadow: 0 0 10px rgba(0, 103, 165, 0.7);
+			}
+			input:active{
+				border-color: #0fa3ff;
+				box-shadow: 0 0 10px rgba(0, 103, 165, 0.7);
+			}
+
+			/*Кнопка обычная*/
+		    .btn {
+				display: inline-block;
+				*display: inline;
+				padding: 4px 12px;
+				margin-bottom: 0;
+				*margin-left: .3em;
+				font-size: 14px;
+				line-height: 20px;
+				color: #333333;
+				text-align: center;
+				text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+				vertical-align: middle;
+				cursor: pointer;
+				background-color: #f5f5f5;
+				*background-color: #e6e6e6;
+				background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+				background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+				background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+				background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+				background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+				background-repeat: repeat-x;
+				border: 1px solid #cccccc;
+				*border: 0;
+				border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+				border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+				border-bottom-color: #b3b3b3;
+				-webkit-border-radius: 4px;
+			   	-moz-border-radius: 4px;
+				border-radius: 4px;
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+				filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+				*zoom: 1;
+				-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+			    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+			    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+			    height: 33px;
+			}
+
+			/*Кнопка зелёная*/
+			.btn-success {
+				width: 100px;
+				color: #ffffff;
+				text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+				background-color: #5bb75b;
+				*background-color: #51a351;
+				background-image: -moz-linear-gradient(top, #62c462, #51a351);
+				background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+				background-image: -webkit-linear-gradient(top, #62c462, #51a351);
+				background-image: -o-linear-gradient(top, #62c462, #51a351);
+				background-image: linear-gradient(to bottom, #62c462, #51a351);
+				background-repeat: repeat-x;
+				border-color: #51a351 #51a351 #387038;
+				border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+				filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+			}
+
+			/*Всплывающие белое окно*/
+			#window{
+				width: 18%;
+				height: 6%;
+				margin: 21% auto;/*отступ что бы окно не было приклеено к левой верхней части*/
+				display: none;/*Что бы отображалась не сразу*/
+				background-color: rgba(245, 245, 245, 0.500);
+				padding-top: 1%;
+				padding-left: 1%;
+				padding-right: 1%;
+				border-radius: 5px;
+				z-index: 200;
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+			}
+
+			/*Тень для всплывающего окна*/
+			#shadow{
+				display: none;/*что бы отображалось не сразу*/
+				opacity: 0.8;/*делает более светлым*/
+				position: fixed;
+				padding-top: 18.7%;
+				padding-right: 37.5%;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				background-color: rgba(1, 1, 1, 0.900);/*цвет фона и прозрачность*/
+				z-index: 100;
+				overflow: auto;
+			}
+
+			/*regystry_student.html----------------------------------------------------*/
+			/*Тень которая видна изначально*/
+			#shadow1{
+				opacity: 0.8;/*делает более светлым*/
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				background-color: rgba(1, 1, 1, 0.900);/*цвет фона и прозрачность*/
+				z-index: 100;
+				overflow: auto;
+				padding-top: 4.7%;
+				padding-right: 32.7%;
+			}
+
+			/*Окно по центру*/
+			#window1{
+				text-align: left;
+				color: black;
+				font-size: 20px;
+				width: 26%;
+				height: 60%;
+				margin: 7% auto;/*отступ что бы окно не было приклеено к левой верхней части*/
+				background-color: rgba(245, 245, 245, 0.500);
+				padding-top: 1%;
+				padding-left: 1%;
+				padding-right: 1%;
+				border-radius: 5px;
+				z-index: 200;
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+			}
+
+			/*forgot_password.html----------------------------------------------------*/
+			
+			/*error_log.html----------------------------------------------------------*/
+			/*Окно по центру*/
+			#window3{
+				text-align: center;
+				color: black;
+				font-size: 20px;
+			}
+
+			/*profile_student.html----------------------------------------------------*/
+			/*Оформление аватарки*/
+			.showchange:hover .photochange{
+				display: block;
+				cursor: pointer;
+			}
+			.img-circle {
+				-webkit-border-radius: 500px;
+				-moz-border-radius: 500px;
+			    border-radius: 500px;
+			}
+
+			/*Наикрупнейший текст*/
+			#text3{
+			    font-family: "Open Sans";
+			    font-size: 24px;
+			}
+
+			/*Средний текст*/
+			#text4{
+			    font-family: "Open Sans";
+			    font-size: 15px;
+			    font-weight: 600; 
+			}
+
+			/*Обычный текст*/
+			#text5{
+			    font-family: "Open Sans";
+			    font-size: 15px;
+			}
+
+			/*Кнопка зелёная*/
+			.btn-green{
+				color: #ffffff;
+				text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+				background-color: #5bb75b;
+				*background-color: #51a351;
+				background-image: -moz-linear-gradient(top, #62c462, #51a351);
+				background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+				background-image: -webkit-linear-gradient(top, #62c462, #51a351);
+				background-image: -o-linear-gradient(top, #62c462, #51a351);
+				background-image: linear-gradient(to bottom, #62c462, #51a351);
+				background-repeat: repeat-x;
+				border-color: #51a351 #51a351 #387038;
+				border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+				filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+			}
+
+			/*Кнопка ораньжевая*/
+			.btn-orange{
+				display: inline-block;
+				*display: inline;
+				padding: 4px 12px;
+				margin-bottom: 0;
+				*margin-left: .3em;
+				font-size: 14px;
+				line-height: 20px;
+				color: #ffffff;
+				text-align: center;
+				text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+				vertical-align: middle;
+				cursor: pointer;
+				background-color: #ffa500;
+				*background-color: #ffa500;
+				background-repeat: repeat-x;
+				border: 1px solid #cccccc;
+				*border: 0;
+				border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+				border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+				border-bottom-color: #b3b3b3;
+				-webkit-border-radius: 4px;
+			   	-moz-border-radius: 4px;
+				border-radius: 4px;
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+				filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+				*zoom: 1;
+				-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+			    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+			    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+			    height: 33px;
+			}
+
+			/*Кнопка голубая*/
+			.btn-blue{
+				display: inline-block;
+				*display: inline;
+				padding: 4px 12px;
+				margin-bottom: 0;
+				*margin-left: .3em;
+				font-size: 14px;
+				line-height: 20px;
+				color: #ffffff;
+				text-align: center;
+				text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+				vertical-align: middle;
+				cursor: pointer;
+				background-color: #0f93ff;
+				*background-color: #0f93ff;
+				background-repeat: repeat-x;
+				border: 1px solid #cccccc;
+				*border: 0;
+				border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+				border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+				border-bottom-color: #b3b3b3;
+				-webkit-border-radius: 4px;
+			   	-moz-border-radius: 4px;
+				border-radius: 4px;
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+				filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+				*zoom: 1;
+				-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+			    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+			    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+			    height: 33px;
+			}
+
+			/*profile_teacher.html----------------------------------------------------*/
+
+			/*profile_admin.html------------------------------------------------------*/
+
+			/*modify_student.html-----------------------------------------------------*/
+
+			/*modify_teacher.html-----------------------------------------------------*/
+
+			/*razdel.html-------------------------------------------------------------*/
+
+			/*create_razdel.html------------------------------------------------------*/
+			#g1{
+				background: linear-gradient(to bottom, #000000, #808080);
+			}
+
+			#g2{
+				background: linear-gradient(to bottom, #808080, #ffffff);
+			}
+
+			/*groups.html-------------------------------------------------------------*/
+
+			/*student.html--------------------------------------------------------------*/
+
+			/*comment.html--------------------------------------------------------------*/			
+			#comm{
+				font-size: 18px;
+				border-width: 2px;
+				border-color: #c0c0c0;
+				border-style: solid;
+				border-radius: 40px;
+				padding: 20px;
+				box-shadow: 0 0 50px rgba(0,0,0,0.5);
+			}			
+
+			/*student_uploads.html----------------------------------------------------*/
+			/*Красная кнопка*/
+			.btn-red{
+				display: inline-block;
+				*display: inline;
+				padding: 4px 12px;
+				margin-bottom: 0;
+				*margin-left: .3em;
+				font-size: 14px;
+				line-height: 20px;
+				color: #ffffff;
+				text-align: center;
+				text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+				vertical-align: middle;
+				cursor: pointer;
+				background-color: #ff2937;
+				*background-color: #ff2937;
+				background-repeat: repeat-x;
+				border: 1px solid #cccccc;
+				*border: 0;
+				border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+				border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+				border-bottom-color: #b3b3b3;
+				-webkit-border-radius: 4px;
+			   	-moz-border-radius: 4px;
+				border-radius: 4px;
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+				filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+				*zoom: 1;
+				-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+			    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+			    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+			    height: 33px;
+			}
+
+			/*info.html--------------------------------------------------------------*/
+
+			/*erorr_log.html---------------------------------------------------------*/
+
+			/*happy_log.html---------------------------------------------------------*/
+
+		</style>
+	</head>
+	<body>
+		<div id='mainframe' align='center'>
+			{% block content %}
+			{% endblock %}
+
+			<div id='text1' align='center'>
+				2016-2017,
+				<a href="https://vk.com/id2241421" class="btn-link" target="_blank">
+					<div id='link'>Сергеев Виктор</div>
+				</a>
+			</div>
+
+		</div>
+	</body>
+</html>

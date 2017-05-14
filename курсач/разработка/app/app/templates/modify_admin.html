@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block content %}
+
+<a href='http://localhost:5000/profile_admin'>
+	<img src="{{url_for('static', filename='Close-button1.png')}}" height='40px' width='40px' align='right'><br>
+</a>
+
+<form method='post' name='reg'>
+	<table style='border-style: solid; border-width: 2px; border-radius: 20px; border-color: #c0c0c0; box-shadow: 0 0 50px rgba(0,0,0,0.5); padding-left: 30px; padding-top: 20px; padding-bottom: 10px;'>
+		<tr>
+			<td>
+				<div id='text3'>
+					Поля для изменений
+				</div>
+			</td>
+			<td>
+				<div id='text3' style='padding-left: 20px;'>
+					Текущая информация:
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id='frame1'>
+					Email
+				</div>
+				{{form.email}}
+			</td>
+			<td>
+				<div id='frame1' style='padding-left: 20px; font-size: 20px;'>
+					{{email}}
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id='frame1'>
+					Псевдоним
+				</div>
+				{{form.nickname}}
+			</td>
+			<td>
+				<div id='frame1' style='padding-left: 20px; font-size: 20px;'>
+					{{nickname}}
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id='frame1'>
+					Пароль
+				</div>
+				{{form.password}}
+			</td>
+			<td>
+				<div id='frame1' style='padding-left: 20px; font-size: 20px;'>
+					{{password}}
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id='frame1'>
+					Имя
+				</div>
+				{{form.name}}
+			</td>
+			<td>
+				<div id='frame1' style='padding-left: 20px; font-size: 20px;'>
+					{{name}}
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id='frame1'>
+					Фамилия
+				</div>
+				{{form.second_name}}
+			</td>
+			<td>
+				<div id='frame1' style='padding-left: 20px; font-size: 20px;'>
+					{{second_name}}
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id='frame1'>
+					Отчество
+				</div>
+				{{form.thriiid_name}}
+			</td>
+			<td>
+				<div id='frame1' style='padding-left: 20px; font-size: 20px;'>
+					{{thriiid_name}}
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td align='center'>
+				<input class='btn-green' style='width: 100px;' type='submit' value='Подтвердить'>	
+			</td>
+		</tr>
+	</table>
+</form>
+
+{% endblock %}

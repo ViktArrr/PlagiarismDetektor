@@ -1,0 +1,45 @@
+
+        {% extends "base.html" %}
+        {% block content %}
+
+        <a href='http://localhost:5000/profile_teacher'>
+            <img src="{{url_for('static', filename='Close-button1.png')}}" height='40px' width='40px' align='right'>
+        </a>
+
+        <form method='post' name='reg'>
+            <table id='comm'>
+            
+                {% for i in range(0, lenSELF, 4) %}
+                    <tr>
+                        <td valign='top'>
+                        
+                            <input type='radio' name='{{enity[i+1]}}'>
+                            <div id='text3'>
+                            
+                                {{ enity[i] }}
+                                {{ enity[i+1] }}
+                                {{ enity[i+2] }}
+                                {{ enity[i+3] }}
+                                
+                            </div>
+                        </td>
+                        <td>
+                            <div align='center' style='padding-left: 40px'>
+                                <img src={{url_for('static', filename='grafics/grf_stud_1.png')}}>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'>
+                            <hr color='#a0a0a0' size='2px'>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <br>
+            <br>
+            <input class='btn-green' style='width: 100px;' type='submit' value='Next'>
+        </form> 
+
+        {% endblock %}
+    

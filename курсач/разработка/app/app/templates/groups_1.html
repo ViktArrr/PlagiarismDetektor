@@ -1,0 +1,51 @@
+
+    {% extends "base.html" %}
+    {% block content %}
+
+    <a href='http://localhost:5000/profile_teacher'>
+    
+        <img src="{{url_for('static', filename='Close-button1.png')}}" height='40px' width='40px' align='right'>
+    </a>
+
+    <form method='post' name='reg'>
+        <table width='80%' align='center' style='border-style: solid; border-width: 2px; border-radius: 20px; border-color: #c0c0c0; box-shadow: 0 0 50px rgba(0,0,0,0.5); padding-left: 30px; padding-top: 20px; padding-bottom: 20px; padding-right: 20px;'>
+            {% for predmet in data %}
+            <tr>
+                <td valign='top'>
+                    <div id='text3'>
+                        Predmet - {{predmet[0]}}
+                    </div>
+                    
+                    {% for lab in predmet %}
+                        <div id='frame1' style='width: 600px;'>
+                        
+                            <input type='radio' name='{{lab}}'>
+                            {{lab}}
+                        </div>
+                        
+                    {% endfor %}
+                    
+                    <br>
+                    <div style='padding-left: 120px;'>
+                            <input class='btn-green' style='width: 100px;' type='submit' value='Next'>
+                    </div>
+                </td>
+                <td>
+                    <div align='center'>
+                    
+                        <img src={{url_for('static', filename='grafics/grf_group_1.png')}}>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='2'>
+                    <hr size='2px' color='#a0a0a0'> 
+                </td>
+            </tr>
+            
+            {% endfor %}
+        </table>
+    </form> 
+
+    {% endblock %}
+    

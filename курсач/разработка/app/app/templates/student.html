@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<a href='http://localhost:5000/groups'>
+	<img src="{{url_for('static', filename='Close-button1.png')}}" height='40px' width='40px' align='right'>
+</a>
+
+<br>
+<br>
+<br>
+<br>
+<table id='comm'>
+	{% for i in range(lenSELF) %}
+		<tr>
+			<td>
+				{{ i }}
+			</td>
+			<td>
+				{{ fio[i] }}
+			</td>
+			<td>
+				{{ group[i] }}
+			</td>
+			<td>
+				{{ labs[i] }}
+			</td>
+			<td>
+				{{ description[i] }}
+			</td>
+			<td>
+				{{ percent[i] }}
+			</td>
+			<td>
+				{{ date[i] }}
+			</td>
+			<td>
+			<code>
+				{{ copycode[i] }}
+			</code>
+			</td>
+		</tr>
+	{% endfor %}
+</table>
+
+{% endblock %}

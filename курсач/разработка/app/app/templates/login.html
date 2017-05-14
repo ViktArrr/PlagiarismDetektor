@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+<br>
+<a href='http://localhost:5000/login'>
+	<img src={{url_for('static', filename='Itmo.svg')}}>
+</a>
+
+<div class='logo-row'>
+	<p class='itmofont'>
+		Прототип детектора плагиата
+	</p>
+</div>
+
+<div id='frame1'>
+	<form method='post'>
+		<br>
+		<br>
+		E-mail<br>
+		{{form.email}}<br>
+		Пароль<br>
+		{{form.password}}<br>
+		<table>
+			<tr>
+				<td>
+					<a href='http://localhost:5000/profile_teacher'>
+					    <input type="submit" value="Войти" class='btn btn-success'/ name='login'>
+					</a>
+				</td>
+				<td>
+					<a href='http://localhost:5000/registry_student' style='padding-left: 132px;'>
+						<input type='submit' value='Регистрация' class='btn' style='width:110px;' name='reg'>
+					</a>
+				<td>
+			</tr>
+		</table>
+		<div id='text2'>
+			<a href='http://localhost:5000/foggot_password'>
+				Забыли пароль?
+			</a>
+		</div>
+	</form>
+</div>
+
+{% endblock %}

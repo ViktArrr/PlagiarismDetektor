@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+
+<a href='http://localhost:5000/login'>
+	<img src="{{url_for('static', filename='Close-button1.png')}}" height='40px' width='40px' align='right'><br>
+</a>
+
+<table width='70%' align='center'>
+	<tr>
+		<td valign='top' rowspan='3'>
+			<div class='showchange' align='center'>
+				<img class='img-circle' src="{{url_for('static', filename='Ava.png')}}">
+			</div>
+		</td>
+		<td valign='top' colspan='2'>
+			<div id='text3'>
+				<h3>
+					{{second_name}}
+					{{name}}
+					{{thriiid_name}}<br>
+				</h3>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td valign='top'>
+			<div id='text4' style='font-size: 20px;'>
+				Информация
+			</div>
+			<div id='text5' style='font-size: 17px;'>
+				{{group}}<br>
+				{{predmet}}<br>
+			</div>
+		</td>
+	<tr>
+		<td>
+			<table>
+				<tr>
+					<td>
+						<a href='http://localhost:5000/create_razdel'>
+							<button class="btn btn-green" type="button" value='Подтвердить' style='float: left;'>Создать раздел</button>
+						</a>
+					</td>
+					<td>
+						<a href='http://localhost:5000/modify_teacher'>
+							<button class="btn" type="button" value='Подтвердить' style='float: left;'>Редактировать профиль</button>
+						</a>
+					</td>
+					<td>
+						<a href='http://localhost:5000/groups'>
+							<button class="btn-orange" type="button" value='Подтвердить' style='float: left;'>Просмотр предметов</button>
+						</a>
+					</td>
+					<td>
+						<a href='http://localhost:5000/Comment'>
+							<button class="btn-blue" type="button" value='Подтвердить' style='float: left;'>Информация о студентах</button>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan='3'>
+			<br>
+			<div align='center'>
+				<img src={{url_for('static', filename='grafics/grf_prof_teach_1.png')}}>
+			</div>
+		</td>
+	</tr>
+</table>
+</div>
+
+{% endblock %}

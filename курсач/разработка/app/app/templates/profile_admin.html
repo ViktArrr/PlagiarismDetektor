@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block content %}
+
+<a href='http://localhost:5000/login'>
+	<img src="{{url_for('static', filename='Close-button1.png')}}" height='40px' width='40px' align='right'><br>
+</a>
+
+<table width='100%'>
+	<tr>
+		<td>
+			<div class='showchange' align='right'>
+				<img class='img-circle' src="{{url_for('static', filename='Ava.png')}}">
+			</div>
+		</td>
+		<td valign='top' align='left' colspan='4'>
+			<div id='text3'>
+				<h3>
+					{{second_name}}
+					{{name}}
+					{{thriiid_name}}<br>
+				</h3>
+			</div>
+			<div style='width: 100%; font-size: 20px; color: #a0a0a0;'>
+				Админинстратор - {{select1}}.<br>
+				Преподаватель - {{select2}}.<br>
+				Студент - {{select3}}.<br>
+			</div>
+			<br>
+			<a href='http://localhost:5000/modify_admin'>
+				<button class="btn" type="button" value='Подтвердить' style='float: left;'>Редактировать профиль</button>
+			</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<br>
+		</td>
+	</tr>
+	<tr>
+		<td style='border-style: solid; border-color: #c0c0c0; border-width: 2px; border-radius: 20px; box-shadow: 0 0 50px rgba(0,0,0,0.5);'>
+			<div id='text3' align='center'>
+				Новый преподаватель
+			</div>
+			<form method='post' name='create'>
+				<div id='text4' style='padding-left: 25px;'>
+					<br>
+					Почта<br>
+					{{form_create.email}}<br>
+					Псевдоним<br>
+					{{form_create.nickname}}<br>
+					Пароль<br>
+					{{form_create.password}}<br>
+					Имя<br>
+					{{form_create.name}}<br>
+					Фамилия<br>
+					{{form_create.second_name}}<br>
+					Отчество<br>
+					{{form_create.thriiid_name}}
+				</div>
+				<div style='padding-left: 140px;'>
+					<input class='btn-green' style='width: 100px;' type='submit' value='Создать'>
+				</div>
+			</form>
+		</td>
+		<td valign='top'>
+			<table width='100%' style='border-style: solid; border-color: #c0c0c0; border-width: 2px; border-radius: 20px; box-shadow: 0 0 50px rgba(0,0,0,0.5); padding-left: 20px;'>
+				<tr>
+					<td colspan='3' align='center'>
+						<div id='text3'>
+							Созданные преподаватели<br><br>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div id='text4' style='font-size: 20px;' align='center'>
+							ФИО
+						</div>
+					</td>
+					<td>
+						<div id='text4' style='font-size: 20px;' align='center'>
+							Предметы
+						</div>	
+					</td>
+					<td>
+						<div id='text4' style='font-size: 20px;'>
+							Группы
+						</div>
+					</td>
+				</tr>
+
+				{% for i in range(0, len) %}
+				<tr>
+					<td width='25%'>
+						<div id='text5' style='font-size: 18px;'>
+							<form action='' method='post' name='add_prednet' align='center'>
+								{{fios[i]}}
+								<input class='btn-red' style='width: 100px;' type='submit' value='Удалить' name='DEL {{idd[i]}}'>
+							</form>
+						</div>
+					</td>
+					<td>
+						<div id='text5' style='font-size: 18px;'>
+							{{predmets[i]}}<br><br>
+							<form action='' method='post' name='add_prednet' align='center'>
+								{{form_add.predmets}}<br>
+								<input class='btn-green' style='width: 100px;' type='submit' value='Добавить' name='{{idd[i]}}'>
+								<input class='btn-red' style='width: 100px;' type='submit' value='Удалить' name='delete {{idd[i]}}'>
+							</form>
+						</div>
+					</td>
+					<td>
+						<div id='text5' style='font-size: 18px;'>
+							{{groups[i]}}<br><br>
+							<form action='' method='post' name='add_group' align='center'>
+								{{form_add.group}}<br>
+								<input class='btn-green' style='width: 100px;' type='submit' value='Добавить' name='{{idd[i]}}'>
+								<input class='btn-red' style='width: 100px;' type='submit' value='Удалить' name='delete {{idd[i]}}'>
+							</form>
+						</div>
+					</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</td>
+	</tr>
+</table>
+
+{% endblock %}

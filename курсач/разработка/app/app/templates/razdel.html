@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+
+<a href={{profile}}>
+	<img src="{{url_for('static', filename='Close-button1.png')}}" height='40px' width='40px' align='right'><br>
+</a>
+
+<br>
+<br>
+<br>
+<br>
+<form method='post' name='load' enctype="multipart/form-data">
+	<table style='box-shadow: 0 0 80px rgba(0, 0, 0, 1);'>
+		<tr>
+			<td id='g1'>
+				<div id='text4' style='font-size: 50px;' align='center'>
+					Шаг 1
+				</div>
+			</td>
+			<td id='g1'>
+				<div id='text4' style='font-size: 50px;' align='center'>
+					Шаг 2
+				</div>
+			</td>
+			<td id='g1'>
+				<div id='text4' style='font-size: 50px;' align='center'>
+					Шаг 3
+				</div>
+			</td>
+			<td id='g1'>
+				<div id='text4' style='font-size: 50px;' align='center'>
+					Шаг 4
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td width='10%' valign='top' id='g2'>
+				<div id='text4' style='font-size: 18px;'>
+					Выберите преподавателя:
+				</div>
+				<br>
+				<div id='text4'>
+					{% for teacher in teachers %}<br>
+						<input type='radio' name={{teacher}}>
+						{{teacher}}
+					{% endfor %}
+				</div>
+			</td>
+			<td valign='top' width='10%' id='g2'>
+				<div id='text4' style='font-size: 18px;'>
+					Выберите предмет:
+				</div>
+				<br>
+				<div id='text4'>
+					{% for predmet in predmets %}
+						<input type='radio' name={{predmet}}>
+						{{predmet}}<br>
+					{% endfor %}
+				</div>
+			</td>
+			<td valign='top' width='10%' id='g2'>
+				<div id='text4' style='font-size: 18px;'>
+					Название лабораторной:
+				</div>
+				<br>
+				<div id='text4'>
+					{% for lab in labs %}
+						<div>
+							<input type='radio' name={{lab}}>
+							{{lab}}
+						</div>
+						<br>
+					{% endfor %}
+				</div>
+			</td>
+			<td valign='top' id='g2'>
+				<br>
+				<div id='text4' style='font-size: 18px;'>				
+					Выберите файл:
+					{{form.image}}							
+				</div>
+				<br>
+				<div id='text4' style='font-size: 18px;'>
+					Название файла(с расширением):
+					{{form.name_file}}
+					<input class='btn-green' style='width: 100px;' type='submit' value='Загрузить'>
+				</div>
+			</td>
+		</tr>
+	</table>	
+</form>
+
+{% endblock %}

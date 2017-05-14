@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<a href='http://localhost:5000/profile_student'>
+	<img src="{{url_for('static', filename='Close-button1.png')}}" height='40px' width='40px' align='right'>
+</a>
+<form method='post' name='reg'>
+	<table style='border-style: solid; border-width: 2px; border-radius: 20px; border-color: #c0c0c0; box-shadow: 0 0 50px rgba(0,0,0,0.5); padding-left: 30px; padding-top: 20px; padding-bottom: 20px; padding-right: 20px;'>
+		<tr>
+			<td colspan='2'>
+				<div id='text4' style='font-size: 20px;'>
+					Загруженные программы:
+				</div>
+			</td>
+		</tr>
+		{% for file in files %}
+			<tr>
+				<td>
+					<div id='text5' style='font-size: 18px;'>
+						{{file}}
+					</div>
+				</td>
+				<td>
+					<input class='btn-red' style='width: 120px;' type='submit' value='Удалить файл' name={{file}}>
+				</td>
+			</tr>
+		{% endfor %}
+	</table>
+</form>
+
+{% endblock %}

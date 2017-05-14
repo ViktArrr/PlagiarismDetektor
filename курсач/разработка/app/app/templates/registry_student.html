@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<a href='http://localhost:5000/login'>
+	<img src='{{url_for('static', filename='Close-button1.png')}}' height='40px' width='40px' align='right'><br>
+</a>
+
+<table style='border-style: solid; border-width: 2px; border-radius: 20px; border-color: #c0c0c0; box-shadow: 0 0 50px rgba(0,0,0,0.5); padding-left: 30px; padding-top: 30px; padding-bottom: 10px; padding-right: 50px;'>
+	<form method='post' name='reg'>
+		<tr>
+			<td id='frame1' style='padding-right: 30px;'>
+				E-mail<br>
+				{{form.email}}<br>
+				Псевдоним<br>
+				{{form.nickname}}<br>
+				Пароль<br>
+				{{form.password}}<br>
+				Имя<br>
+				{{form.name}}<br>
+				Фамилия<br>
+				{{form.second_name}}<br>
+				Отчество<br>
+				{{form.thriiid_name}}<br>
+				<br>
+				<div align='center'>
+					<input class='btn-green' style='width: 100px;' type='submit' value='Готово'>
+				</div>
+			</td>
+			<td valign='top'>
+				<div style='font-family: "Open Sans"; font-size: 24px; padding-bottom: 20px; padding-left: 335px; color: #b0b0b0'>
+					Группа<br>
+				</div>
+
+				<div style='padding-left: 20px; font-size: 18px; color: #b0b0b0;'>
+					{{form.group}}<br>
+				</div>
+			</td>
+		</tr>
+	</form>	
+</table>
+
+{% endblock %}

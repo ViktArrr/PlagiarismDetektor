@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+<a href='http://localhost:5000/profile_teacher'>
+	<img src="{{url_for('static', filename='Close-button1.png')}}" height='40px' width='40px' align='right'>
+</a>
+<form method='post' name='create'>
+	<table style='border-style: solid; border-width: 2px; border-radius: 20px; border-color: #c0c0c0; box-shadow: 0 0 50px rgba(0,0,0,0.5); padding-left: 30px; padding-top: 20px; padding-bottom: 20px;'>
+		<tr>
+			<td>
+				<div id='frame1' style='font-size: 18px;'>
+					Название лабораторной
+				</div>
+				{{form.name_lab}}
+			</td>
+			<td rowspan='3' valign='top'>
+				<div id='frame1' style='font-size: 20px; padding-left: 20px;'>
+					Создать для предмета:
+				</div>
+				<div id='text5' style='padding-left: 20px;'>
+					{% for predmet in predmets %}
+						{{predmet}}
+						<input class='btn-green' style='width: 100px;' type='submit' value='Создать' name='{{predmet}}'><br>
+					{% endfor %}
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id='frame1' style='font-size: 18px;'>
+					Описание лабораторной
+				</div>
+				{{form.description}}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id='frame1' style='font-size: 18px;'>
+					Помощь в выполнении
+				</div>
+				{{form.helpp}}
+			</td>
+		</tr>
+	</table>
+</form>
+
+{% endblock %}
